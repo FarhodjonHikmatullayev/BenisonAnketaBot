@@ -43,13 +43,13 @@ class Region(models.Model):
 
 
 class Branch(models.Model):
-    title_uzb = models.CharField(max_length=221, null=True, blank=True, verbose_name="Filial nomi(Uzb)")
-    title_rus = models.CharField(max_length=221, null=True, blank=True, verbose_name="Filial nomi(Rus)")
-    description_uzb = models.CharField(max_length=221, null=True, blank=True, verbose_name="Qo'shimcha(Uzb)")
-    description_rus = models.CharField(max_length=221, null=True, blank=True, verbose_name="Qo'shimcha(Rus)")
-    latitude = models.CharField(max_length=221, null=True, blank=True, verbose_name="Latitude")
-    longitude = models.CharField(max_length=221, null=True, blank=True, verbose_name="Longitude")
-    region = models.ForeignKey(Region, null=True, blank=True, on_delete=models.CASCADE, verbose_name="Viloyat")
+    title_uzb = models.CharField(max_length=221, verbose_name="Filial nomi(Uzb)")
+    title_rus = models.CharField(max_length=221, verbose_name="Filial nomi(Rus)")
+    description_uzb = models.CharField(max_length=221, verbose_name="Qo'shimcha(Uzb)")
+    description_rus = models.CharField(max_length=221, verbose_name="Qo'shimcha(Rus)")
+    latitude = models.CharField(max_length=221, verbose_name="Latitude")
+    longitude = models.CharField(max_length=221, verbose_name="Longitude")
+    region = models.ForeignKey(Region, on_delete=models.CASCADE, verbose_name="Viloyat")
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="Vaqt")
 
     class Meta:
@@ -63,8 +63,8 @@ class Branch(models.Model):
 
 
 class Category(models.Model):
-    title_uzb = models.CharField(max_length=221, null=True, blank=True, verbose_name="Kategoriya nomi(Uzb)")
-    title_rus = models.CharField(max_length=221, null=True, blank=True, verbose_name="Kategoriya nomi(Rus)")
+    title_uzb = models.CharField(max_length=221, verbose_name="Kategoriya nomi(Uzb)")
+    title_rus = models.CharField(max_length=221, blank=True, verbose_name="Kategoriya nomi(Rus)")
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="Vaqt")
 
     class Meta:
@@ -77,14 +77,14 @@ class Category(models.Model):
 
 
 class Vacancy(models.Model):
-    title_uzb = models.CharField(max_length=221, null=True, blank=True, verbose_name="Vakansiya nomi(Uzb)")
-    title_rus = models.CharField(max_length=221, null=True, blank=True, verbose_name="Vakansiya nomi(Rus)")
-    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE, verbose_name="Kategoriya")
-    photo = models.ImageField(upload_to='vacancies/', null=True, blank=True, verbose_name="Rasm")
-    region = models.ForeignKey(Region, null=True, blank=True, on_delete=models.CASCADE, verbose_name="Viloyat")
-    branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Filial")
-    description_uzb = models.TextField(null=True, blank=True, verbose_name="Vakansiya haqida(Uzb)")
-    description_rus = models.TextField(null=True, blank=True, verbose_name="Vakansiya haqida(Rus)")
+    title_uzb = models.CharField(max_length=221, verbose_name="Vakansiya nomi(Uzb)")
+    title_rus = models.CharField(max_length=221, verbose_name="Vakansiya nomi(Rus)")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Kategoriya")
+    photo = models.ImageField(upload_to='vacancies/', verbose_name="Rasm")
+    region = models.ForeignKey(Region, on_delete=models.CASCADE, verbose_name="Viloyat")
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE, verbose_name="Filial")
+    description_uzb = models.TextField(verbose_name="Vakansiya haqida(Uzb)")
+    description_rus = models.TextField(verbose_name="Vakansiya haqida(Rus)")
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="Vaqt")
 
     class Meta:
