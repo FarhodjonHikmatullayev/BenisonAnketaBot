@@ -47,8 +47,8 @@ class Branch(models.Model):
     title_rus = models.CharField(max_length=221, verbose_name="Filial nomi(Rus)")
     description_uzb = models.CharField(max_length=221, verbose_name="Qo'shimcha(Uzb)")
     description_rus = models.CharField(max_length=221, verbose_name="Qo'shimcha(Rus)")
-    latitude = models.CharField(max_length=221, verbose_name="Latitude")
-    longitude = models.CharField(max_length=221, verbose_name="Longitude")
+    latitude = models.FloatField(verbose_name="Latitude")
+    longitude = models.FloatField(verbose_name="Longitude")
     region = models.ForeignKey(Region, on_delete=models.CASCADE, verbose_name="Viloyat")
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="Vaqt")
 
