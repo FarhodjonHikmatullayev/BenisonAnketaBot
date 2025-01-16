@@ -64,7 +64,7 @@ class Branch(models.Model):
 
 class Category(models.Model):
     title_uzb = models.CharField(max_length=221, verbose_name="Kategoriya nomi(Uzb)")
-    title_rus = models.CharField(max_length=221, blank=True, verbose_name="Kategoriya nomi(Rus)")
+    title_rus = models.CharField(max_length=221, verbose_name="Kategoriya nomi(Rus)")
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="Vaqt")
 
     class Meta:
