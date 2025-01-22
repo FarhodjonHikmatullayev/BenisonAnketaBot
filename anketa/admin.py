@@ -29,7 +29,7 @@ class RegionAdmin(admin.ModelAdmin):
 @admin.register(Branch)
 class BranchAdmin(admin.ModelAdmin):
     list_display = ('id', 'title_uzb', 'region', 'created_at')
-    search_fields = ('title', 'region')
+    search_fields = ('title_uzb', 'region')
     list_filter = ('created_at', 'region__name_uzb')
     date_hierarchy = 'created_at'
 
@@ -37,7 +37,7 @@ class BranchAdmin(admin.ModelAdmin):
 @admin.register(Vacancy)
 class VacancyAdmin(admin.ModelAdmin):
     list_display = ('id', 'title_uzb', 'branch', 'created_at')
-    search_fields = ('title', 'branch__title_uzb')
+    search_fields = ('title_uzb', 'branch__title_uzb')
     list_filter = ('created_at', 'branch__title_uzb', 'region__name_uzb')
     date_hierarchy = 'created_at'
 
@@ -45,7 +45,7 @@ class VacancyAdmin(admin.ModelAdmin):
 @admin.register(Resume)
 class ResumeAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'last_name', 'vacancy', 'gender', 'date_of_birth', 'location', 'created_at')
-    search_fields = ('first_name', 'last_name', 'email', 'username', 'phone', 'vacancy__title')
+    search_fields = ('first_name', 'last_name', 'email', 'username', 'phone', 'vacancy__title_uzb')
     list_filter = (
         'branch__title_uzb', 'region__name_uzb', 'vacancy__title_uzb',
         'gender', 'is_student', 'created_at', 'category', 'marital_status', 'education_form', 'education_level',
