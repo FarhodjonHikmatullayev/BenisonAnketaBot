@@ -29,7 +29,7 @@ class RegionAdmin(admin.ModelAdmin):
 @admin.register(Branch)
 class BranchAdmin(admin.ModelAdmin):
     list_display = ('id', 'title_uzb', 'region', 'created_at')
-    search_fields = ('title_uzb', 'region')
+    search_fields = ('title_uzb', 'region__name_uzb')
     list_filter = ('created_at', 'region__name_uzb')
     date_hierarchy = 'created_at'
 
